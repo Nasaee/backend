@@ -21,6 +21,8 @@ model User {
   birthDay DateTime
   genderId String?
   gender   Gender?  @relation(fields: [genderId], references: [id])
+
+  @@unique([name, lastName])
 }
 
 model Gender {

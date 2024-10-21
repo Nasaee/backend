@@ -1,13 +1,20 @@
 import { Router } from 'express';
+import { errorHandler } from '../middlewares/errors.middleware';
+import {
+  createUser,
+  deleteUser,
+  getUsers,
+  updateUser,
+} from '../controllers/user.controller';
 
 const userRouter = Router();
 
-userRouter.post('/');
+userRouter.post('/', errorHandler(createUser));
 
-userRouter.get('/');
+userRouter.get('/', errorHandler(getUsers));
 
-userRouter.patch('/');
+userRouter.patch('/', errorHandler(updateUser));
 
-userRouter.delete('/');
+userRouter.delete('/', errorHandler(deleteUser));
 
 export default userRouter;
