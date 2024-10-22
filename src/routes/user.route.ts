@@ -13,8 +13,8 @@ userRouter.post('/', errorHandler(createUser));
 
 userRouter.get('/', errorHandler(getUsers));
 
-userRouter.patch('/', errorHandler(updateUser));
+userRouter.patch('/:id', errorHandler(updateUser));
 
-userRouter.delete('/', errorHandler(deleteUser));
+userRouter.delete('/:id', errorHandler(deleteUser));
 
 export default userRouter;

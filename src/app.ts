@@ -3,7 +3,6 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import { PORT } from './utils/env';
-import userRouter from './routes/user.route';
 import { rateLimitMiddleware } from './middlewares/rateLimit.middleware';
 import rootRouter from './routes/rootRouter';
 import { errorHandlerMiddleware } from './middlewares/errors.middleware';
@@ -31,7 +30,7 @@ app.use(helmet());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-app.use('/api', [rateLimitMiddleware(5, 1000)], rootRouter);
+app.use('/api', [rateLimitMiddleware(5, 5000)], rootRouter);
 
 app.use(errorHandlerMiddleware);
 

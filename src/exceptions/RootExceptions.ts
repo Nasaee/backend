@@ -4,6 +4,8 @@ export enum ErrorCode {
   UNPROCESSABLE_ENTITY = 1003,
   NOT_FOUND = 1004,
   GENDER_NOT_FOUND = 1005,
+  GENDER_ALREADY_EXISTS = 1006,
+  USER_NOT_FOUND = 1007,
 }
 
 export class HttpException extends Error {
