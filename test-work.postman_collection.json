@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "f1b0fc8f-c187-4d45-9362-5587bc741b78",
+		"name": "test-work",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29600571"
+	},
+	"item": [
+		{
+			"name": "gender",
+			"item": [
+				{
+					"name": "create gender",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gender\": \"female\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/api/gender",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"gender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get gender",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/api/gender",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"gender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update gender",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gender\": \"female\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/api/gender/689c0c72-b6c0-4cbc-a091-3dfb6b86ad0e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"gender",
+								"689c0c72-b6c0-4cbc-a091-3dfb6b86ad0e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete gender",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/api/gender/689c0c72-b6c0-4cbc-a091-3dfb6b86ad0e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"gender",
+								"689c0c72-b6c0-4cbc-a091-3dfb6b86ad0e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nasaee\",\r\n    \"lastName\": \"Nadadam\",\r\n    \"nickName\": \"E\",\r\n    \"birthDay\": \"1992-11-23\",\r\n    \"genderId\": \"0fcaaaf5-acb3-49f8-9fe5-ff5a25a9fe3a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nasaee\",\r\n    \"lastName\": \"Nadadam\",\r\n    \"nickName\": \"E\",\r\n    \"birthDay\": \"1992-11-23\",\r\n    \"genderId\": \"0fcaaaf5-acb3-49f8-9fe5-ff5a25a9fe3a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-oc0o.onrender.com/api/user",
+							"protocol": "https",
+							"host": [
+								"backend-oc0o",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Nasaee\",\r\n    \"lastName\": \"Nadadam..\",\r\n    \"nickName\": \"E\",\r\n    \"birthDay\": \"1992-11-23T00:00:00.000Z\",\r\n    \"genderId\": \"0fcaaaf5-acb3-49f8-9fe5-ff5a25a9fe3a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/api/user/289d66e1-c188-4f76-84e3-34733f5ab8ae",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"user",
+								"289d66e1-c188-4f76-84e3-34733f5ab8ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8888/api/user/273b4727-4291-4644-952c-86e382388f2a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"api",
+								"user",
+								"273b4727-4291-4644-952c-86e382388f2a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend-oc0o.onrender.com",
+					"protocol": "https",
+					"host": [
+						"backend-oc0o",
+						"onrender",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
