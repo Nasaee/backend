@@ -6,6 +6,7 @@ export enum ErrorCode {
   GENDER_NOT_FOUND = 1005,
   GENDER_ALREADY_EXISTS = 1006,
   USER_NOT_FOUND = 1007,
+  USER_ALREADY_EXISTS = 1008,
 }
 
 export class HttpException extends Error {

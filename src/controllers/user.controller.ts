@@ -4,25 +4,38 @@ import { InternalErrorException } from '../exceptions/InternalError';
 import { db } from '../db';
 import { NotFoundException } from '../exceptions/NotFound';
 import { ErrorCode } from '../exceptions/RootExceptions';
+import { BadRequestException } from '../exceptions/BadRequest';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { capitalText } from '../utils/capitalText';
 
 export const createUser = async (req: Request, res: Response) => {
+  console.log(req.body);
+  // return res.send(req.body);
   const userSchema = await getUserSchema();
-  const { name, lastName, nickName, birthDay, genderId } = userSchema.parse(
-    req.body
-  );
+
   try {
+    const { name, lastName, nickName, birthDay, genderId } = userSchema.parse(
+      req.body
+    );
     const newUser = await db.user.create({
       data: {
-        name,
-        lastName,
-        nickName,
+        name: capitalText(name),
+        lastName: capitalText(lastName),
+        nickName: capitalText(nickName),
         birthDay,
         genderId,
       },
     });
     return res.send(newUser);
   } catch (error) {
-    throw new InternalErrorException('Something went wrong');
+    if (error instanceof PrismaClientKnownRequestError) {
+      throw new BadRequestException(
+        'User already exists',
+        ErrorCode.USER_ALREADY_EXISTS
+      );
+    } else {
+      throw new InternalErrorException('Something went wrong');
+    }
   }
 };
 

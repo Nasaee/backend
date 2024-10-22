@@ -4,7 +4,7 @@ import { getGenderEnum } from '../utils/enums/genderEnum';
 const dateRegex = /^\d{4}-\d{2}-\d{2}(T.*)?$/;
 
 export const getUserSchema = async () => {
-  const genderIdEnum = await getGenderEnum();
+  // const genderIdEnum = await getGenderEnum();
   return z.object({
     name: z.string().min(3).max(100),
     lastName: z.string().min(2).max(100),
@@ -24,6 +24,6 @@ export const getUserSchema = async () => {
         const date = new Date(val);
         return date.toISOString().split('T')[0] + 'T00:00:00.000Z';
       }),
-    genderId: genderIdEnum,
+    genderId: z.string(),
   });
 };
