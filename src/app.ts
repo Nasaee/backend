@@ -31,9 +31,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// UNCOMMENT FOR TESTING
-// app.use('/api', rootRouter);
-app.use('/api', [rateLimitMiddleware(5, 10000)], rootRouter);
+// UNCOMMENT TO LIMIT API REQUESTS
+// app.use('/api', [rateLimitMiddleware(5, 10000)], rootRouter);
+app.use('/api', rootRouter);
 
 app.use(errorHandlerMiddleware);
 
