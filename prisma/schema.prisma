@@ -21,6 +21,7 @@ model User {
   birthDay DateTime
   genderId String?
   gender   Gender?  @relation(fields: [genderId], references: [id])
+  cratedAt DateTime @default(now())
 
   @@unique([name, lastName])
 }

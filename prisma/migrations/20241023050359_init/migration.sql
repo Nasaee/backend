@@ -6,7 +6,9 @@ CREATE TABLE `User` (
     `nickName` VARCHAR(255) NOT NULL,
     `birthDay` DATETIME(3) NOT NULL,
     `genderId` VARCHAR(191) NULL,
+    `cratedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
+    UNIQUE INDEX `User_name_lastName_key`(`name`, `lastName`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

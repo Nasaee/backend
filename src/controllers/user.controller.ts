@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { getUserSchema } from '../schemas/user.schema';
 import { InternalErrorException } from '../exceptions/InternalError';
 import { db } from '../db';
@@ -9,8 +9,6 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { capitalText } from '../utils/capitalText';
 
 export const createUser = async (req: Request, res: Response) => {
-  console.log(req.body);
-  // return res.send(req.body);
   const userSchema = await getUserSchema();
 
   try {
@@ -43,6 +41,7 @@ export const getUsers = async (req: Request, res: Response) => {
   try {
     const users = await db.user.findMany({
       include: { gender: true },
+      orderBy: { cratedAt: 'asc' },
     });
     return res.send(users);
   } catch (error) {
@@ -50,20 +49,34 @@ export const getUsers = async (req: Request, res: Response) => {
   }
 };
 
-export const updateUser = async (req: Request, res: Response) => {
+export const updateUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { id } = req.params;
   const userSchema = await getUserSchema();
   const userData = userSchema.parse(req.body);
 
   try {
+    const user = await db.user.findUnique({ where: { id } });
+    if (!user) {
+      next(new NotFoundException('User not found', ErrorCode.USER_NOT_FOUND));
+    }
     const updatedUser = await db.user.update({
       where: { id },
       data: userData,
     });
     return res.send(updatedUser);
   } catch (error) {
-    console.log(error);
-    throw new InternalErrorException('Something went wrong');
+    if (error instanceof PrismaClientKnownRequestError) {
+      throw new BadRequestException(
+        'User already exists',
+        ErrorCode.USER_ALREADY_EXISTS
+      );
+    } else {
+      throw new InternalErrorException('Something went wrong');
+    }
   }
 };
 
