@@ -30,8 +30,10 @@ app.use(helmet());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-app.use('/api', rootRouter);
-// app.use('/api', [rateLimitMiddleware(5, 5000)], rootRouter);
+
+// UNCOMMENT FOR TESTING
+// app.use('/api', rootRouter);
+app.use('/api', [rateLimitMiddleware(5, 10000)], rootRouter);
 
 app.use(errorHandlerMiddleware);
 
